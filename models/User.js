@@ -12,9 +12,7 @@ const userSchema = new Schema(
             type: String,
             unique: true,
             required: true,
-            validate: {
-                match: [/^[a-z0-9._%+-]{1,64}@(?:[a-z0-9-]{1,63}\.){1,125}[a-z]{2,63}$/i, 'Please give a valid email address!' ]
-            }
+            match: [ /^[a-z0-9._%+-]{1,64}@(?:[a-z0-9-]{1,63}\.){1,125}[a-z]{2,63}$/i, 'Please give a valid email address!' ]
         },
         thoughts: [
             {
