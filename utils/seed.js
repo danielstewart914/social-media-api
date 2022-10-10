@@ -1,3 +1,4 @@
+const { Types } = require('mongoose');
 const connection = require( '../config/connection' );
 const { User, Thought } = require( '../models' );
 const userData = require( './users.json' );
@@ -43,6 +44,7 @@ const seedThoughts = async ( users ) => {
             const reactionArray = [];
             for ( let j = 0; j < Math.floor( Math.random() * 5 ); j++ ) {
                 reactionArray.push ( {
+                    reactionId: new Types.ObjectId(),
                     reactionBody: genRandomSentence( 3, 5 ),
                     username: users[randomIndex( users )].username
                 } );
