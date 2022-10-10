@@ -1,10 +1,7 @@
 const { Schema, model } = require( 'mongoose' );
 const reactionSchema = require( './Reaction' );
 
-const formatDateTime = timestamp => {
-    const date = new Date( timestamp );
-    return date.toLocaleDateString( 'en-us' ) + ' ' + date.toLocaleTimeString( 'en-us' );
-}
+const formatDateTime = require( '../utils/formatDateTime' );
 
 const thoughtSchema = new Schema(
     {
