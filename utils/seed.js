@@ -7,15 +7,17 @@ const words = require( './words.json' );
 connection.on( 'error', (err) => err );
 
 const seedFriends = async ( users ) => {
-    let friend;
+    let friendIndex;
+    let duplicate
 
     for ( const i in users ) {
         const friendsArray = [];
         for ( let j = 0; j < Math.floor( Math.random() * 6 ); j++ ) {
             do {
-                friend = Math.floor( Math.random() * users.length );
-            } while ( friend == i );
-            friendsArray.push(users[friend]._id);
+                friendIndex = Math.floor( Math.random() * users.length );
+                duplicate  = friendsArray.find( friend => friend === users[friendIndex]._id );
+            } while ( friendIndex == i || duplicate );
+            friendsArray.push(users[friendIndex]._id);
         }
         await User.updateOne( { _id: users[i]._id }, {
             $push: { friends: { $each: friendsArray } }
