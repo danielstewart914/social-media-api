@@ -80,7 +80,9 @@ A simple Social Media API backend
 
     - `userId` - id of the user this thought belongs to ( String )
     <br>
+
     ---
+
     ### **Reactions**
 
     POST `/api/thoughts/:thoughtId/reactions` - Creates new reaction
